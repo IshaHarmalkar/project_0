@@ -1,0 +1,82 @@
+from dao.userDao import UserDao
+from models.user import User
+
+
+class UserService:
+    def __init__(self):
+        self.userDao = UserDao()
+
+
+    def register(self, user):
+        if not user.name or not user.name.strip():
+            raise ValueError("Name cannot be empty")
+        if not user.email or not user.email.strip():
+            raise ValueError("Email cannot be empty")
+        if not user.password:
+            raise ValueError("Password cannot be empty")
+
+        """  email = email.strip()
+        name = myname.strip()
+        password = password.strip() """
+
+        existingUser = self.userDao.getUserByEmail(user.email.strip())
+
+        if existingUser:
+            raise ValueError("Email already registered")
+
+        newUser = User(
+            name=user.name.strip(),
+            email=user.email.strip(),
+            password=user.password.strip()
+        )
+        return self.userDao.createuser(newUser)
+
+    def login(self, email, password):
+        user = self.userDao.getUserByEmail(email)
+
+        if user is None:
+            raise ValueError("Invalid email or password") #user doe snot exist for this email, msg capped to not reveal
+
+        validPassword = user.password == password
+        if not validPassword:
+            raise ValueError("Invalid email or password")
+
+        return user
+
+    def getUser(self, userId):
+        user = self.userDao.getUserById(userId)
+
+        if user is None:
+            raise ValueError("User not found")
+
+        return user
+
+    def getAllUsers(self):
+        return self.userDao.getAllUsers()
+
+    def updateUser(self, user):
+        existingUser = self.userDao.getUserById(user.id)
+
+        if existingUser is None:
+            raise ValueError("User not found")
+
+        exisitngEmailUser = self.userDao.getUserByEmail(user.email)
+
+        if(exisitngEmailUser is not None and exisitngEmailUser.id != user.id):
+            raise ValueError("Email already registered")
+
+        return self.userDao.updateUser(user)
+
+
+
+    def deleteUser(self, userId):
+        user = self.userDao.getUserById(userId)
+
+        if user is None:
+            raise ValueError("User not found")
+
+        return self.userDao.deleteUser(userId)
+
+
+
+
