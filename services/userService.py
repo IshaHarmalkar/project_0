@@ -20,6 +20,7 @@ class UserService:
         password = password.strip() """
 
         existingUser = self.userDao.getUserByEmail(user.email.strip())
+        
 
         if existingUser:
             raise ValueError("Email already registered")

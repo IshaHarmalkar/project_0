@@ -1,18 +1,26 @@
 from config.connection import getConnection
 
+from controllers.categoryController import CategoryController
 from controllers.userController import UserController
 
 
-conn = getConnection()
 
-controller = UserController()
-#u1 = controller.register()
-#controller.updateUser()
+""" userController = UserController()
+user = userController.register()
+user = userController.updateUser()
 
-controller.getAllUsers()
-controller.getUser()
-#controller.deleteUser()
+user= userController.getAllUsers()
+user = userController.getUser()
+user = userController.deleteUser()
+ """
 
+
+categoryController = CategoryController()
+categoryController.createCategory()
+categoryController.getAllCategories()
+categoryController.getCategoryById()
+categoryController.updateCategory()
+categoryController.deleteCategory()
 
 
 
