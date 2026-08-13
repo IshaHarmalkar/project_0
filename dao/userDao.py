@@ -18,6 +18,8 @@ class UserDao:
         conn.commit()
         user.id = cursor.lastrowid
         cursor.close()
+        conn.close()
+
         return user
 
 
@@ -30,6 +32,9 @@ class UserDao:
         cursor.execute(query, (userId,))
         row = cursor.fetchone()
         cursor.close()
+        conn.close()
+
+
 
         if row is None:
             return None
@@ -44,6 +49,8 @@ class UserDao:
         cursor.execute(query, (email,))
         row = cursor.fetchone()
         cursor.close()
+        conn.close()
+
 
         if row is None:
             return None
@@ -61,6 +68,8 @@ class UserDao:
         cursor.execute(query)
         rows = cursor.fetchall()
         cursor.close()
+        conn.close()
+
         return [
             mapRowToUser(row) for row in rows
         ]
@@ -78,6 +87,8 @@ class UserDao:
 
         updated = cursor.rowcount > 0
         cursor.close()
+        conn.close()
+
         return updated
 
 
@@ -90,6 +101,8 @@ class UserDao:
         conn.commit()
         deleted = cursor.rowcount > 0
         cursor.close()
+        conn.close()
+
         return deleted
         
 

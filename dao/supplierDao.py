@@ -16,6 +16,8 @@ class SupplierDao:
         supplier.id = cursor.lastrowid
 
         cursor.close()
+        conn.close()
+
         return supplier
 
 
@@ -27,6 +29,8 @@ class SupplierDao:
         cursor.execute(query, (supplierId,))
         row = cursor.fetchone()
         cursor.close()
+        conn.close()
+
         return mapRowToSupplier(row)
 
     def getSupplierByCompanyName(self, companyName):
@@ -36,6 +40,8 @@ class SupplierDao:
         cursor.execute(query, (companyName,))
         row = cursor.fetchone()
         cursor.close()
+        conn.close()
+
 
         return mapRowToSupplier(row)
 
@@ -46,6 +52,8 @@ class SupplierDao:
         cursor.execute(query)
         rows = cursor.fetchall()
         cursor.close()
+        conn.close()
+
         return [
             mapRowToSupplier(row)
             for row in rows
@@ -71,6 +79,8 @@ class SupplierDao:
 
         updated = cursor.rowcount > 0
         cursor.close()
+        conn.close()
+
         return updated
 
 
@@ -84,6 +94,8 @@ class SupplierDao:
 
         deleted = cursor.rowcount > 0
         cursor.close()
+        conn.close()
+
         return deleted
 
     

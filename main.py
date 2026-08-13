@@ -1,6 +1,8 @@
 from config.connection import getConnection
 
+from controllers import supplierController
 from controllers.categoryController import CategoryController
+from controllers.productController import ProductController
 from controllers.supplierController import SupplierController
 from controllers.userController import UserController
 
@@ -25,9 +27,31 @@ categoryController.deleteCategory() """
 
 
 
-supplierController = SupplierController()
+""" supplierController = SupplierController()
 supplierController.createSupplier()
 supplierController.getAllSuppliers()
 supplierController.getSupplierById()
 supplierController.updateSupplier()
-supplierController.deleteSupplier()
+supplierController.deleteSupplier() """
+
+
+productController = ProductController()
+
+
+for i in range(5):
+    productController.createProduct()
+
+    
+productController.updateProduct()
+productController.getAllProducts()
+productController.getProductById()
+productController.getProductByCategory()
+productController.getProductBySupplier()
+productController.deactivateProduct()
+productController.activateProduct()
+
+
+
+
+
+

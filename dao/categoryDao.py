@@ -20,6 +20,8 @@ class CategoryDao:
         category.id = cursor.lastrowid
 
         cursor.close()
+        conn.close()
+
         return category
 
 
@@ -31,6 +33,8 @@ class CategoryDao:
         cursor.execute(query, (categoryId,))
         row = cursor.fetchone()
         cursor.close()
+        conn.close()
+
 
         return mapRowToCategory(row)
 
@@ -42,6 +46,8 @@ class CategoryDao:
         cursor.execute(query, (name,))
         row = cursor.fetchone()
         cursor.close()
+        conn.close()
+
         return mapRowToCategory(row)
 
 
@@ -53,6 +59,8 @@ class CategoryDao:
         cursor.execute(query)
         rows = cursor.fetchall()
         cursor.close()
+        conn.close()
+
         return [
             mapRowToCategory(row)
             for row in rows
@@ -70,6 +78,8 @@ class CategoryDao:
         conn.commit()
         updated = cursor.rowcount > 0
         cursor.close()
+        conn.close()
+
         return updated
 
 
@@ -85,4 +95,6 @@ class CategoryDao:
         conn.commit()
         deleted = cursor.rowcount > 0
         cursor.close()
+        conn.close()
+
         return deleted
