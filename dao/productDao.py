@@ -29,17 +29,24 @@ class ProductDao:
         return product
 
 
-    def getProductById(self, productId):
+    def getProductById(self, productId, conn=None):
+
+        shouldCloseConn  = False
 
         query = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products WHERE id=%s"
-        conn = getConnection()
+
+        if conn is None:
+            conn = getConnection()
+            shouldCloseConn  = True
         cursor = conn.cursor(dictionary=True)
 
         cursor.execute(query, (productId,))
 
         row = cursor.fetchone()
         cursor.close()
-        conn.close()
+
+        if shouldCloseConn:
+            conn.close()
 
         return mapRowToProduct(row)
 
@@ -156,4 +163,15 @@ class ProductDao:
         conn.close()
 
         return deleted
+
+    def reduceStock(self, productId, qty, conn):
+        query = "UPDATE products SET stock = stock - %s WHERE id = %s AND stock > %s AND is_active = TRUE"
+
+        cursor = conn.cursor()
+
+        cursor.execute(query, (qty, productId, qty))
+
+        updated = cursor.rowcount > 0
+        cursor.close()
+        return updated
     

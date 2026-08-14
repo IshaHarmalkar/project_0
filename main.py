@@ -7,6 +7,7 @@ from controllers.supplierController import SupplierController
 from controllers.userController import UserController
 from models.cart import Cart
 from controllers.cartController import CartController
+from controllers.orderController import OrderController
 
 
 
@@ -49,7 +50,7 @@ productController.activateProduct()
  """
 
 
-cart = Cart(1)
+""" cart = Cart(1)
 cartController = CartController()
 cartController.addProduct(cart)
 cartController.addProduct(cart)
@@ -59,7 +60,48 @@ cartController.displayCart(cart)
 cartController.updateQuantity(cart)
 cartController.displayCart(cart)
 cartController.removeProduct(cart)
-cartController.displayCart(cart)
+cartController.displayCart(cart) """
+
+
+userId = 1
+
+cart = Cart(userId)
+
+cartController  = CartController()
+orderController  = OrderController()
+productController = ProductController()
+
+while True:
+    print("----------WELCOME----------------")
+    print("1. Add Product")
+    print("2. View Cart")
+    print("3. Update Cart")
+    print("4. Remove Product")
+    print("5. Checkout")
+    print("6. View Products")
+    print("7. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        cartController.addProduct(cart)
+    elif choice == "2":
+        cartController.displayCart(cart)
+    elif choice == "3":
+        cartController.updateQuantity(cart)
+    elif choice == "4":
+        cartController.removeProduct(cart)
+    elif choice == "5":
+        orderController.checkout(cart)
+    elif choice == "6":
+        productController.getAllProducts()
+    elif choice == "7":
+        print("Thank you..")
+        break
+    else:
+        print("Invalid chocie")
+
+
 
 
 
