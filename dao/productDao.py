@@ -63,7 +63,7 @@ class ProductDao:
 
 
     def getAllProducts(self):
-        query  = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products ORDER BY name"
+        query  = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products ORDER BY id"
         conn  = getConnection()
         cursor = conn.cursor(dictionary=True)
         cursor.execute(query)
@@ -165,7 +165,7 @@ class ProductDao:
         return deleted
 
     def reduceStock(self, productId, qty, conn):
-        query = "UPDATE products SET stock = stock - %s WHERE id = %s AND stock > %s AND is_active = TRUE"
+        query = "UPDATE products SET stock = stock - %s WHERE id = %s AND stock >= %s AND is_active = TRUE"
 
         cursor = conn.cursor()
 
