@@ -34,9 +34,14 @@ class UserService:
 
     def login(self, email, password, loginAsAdmin=False):
         user = self.userDao.getUserByEmail(email)
+        
+
 
         if user is None:
             raise ValueError("Invalid email or password") #user doe snot exist for this email, msg capped to not reveal
+
+        print("Inside login, printing fetched password: ", user.password)
+        print("Inside login, printing password: ", password)
 
         validPassword = user.password == password
         if not validPassword:

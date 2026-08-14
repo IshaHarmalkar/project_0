@@ -46,8 +46,7 @@ class AdminMenu:
                 self.orderController.getAllOrders()
             
             elif choice == "6":
-                s
-
+                print("Exiting Admin Panel")
                 break          
             
             else:
@@ -146,6 +145,8 @@ class AdminMenu:
 
             elif choice == "5":
                 self.supplierController.deleteSupplier()
+            elif choice == "6":
+                break
 
             else:
                 print("Invalid Choice")

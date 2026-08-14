@@ -1,7 +1,9 @@
 from config.connection import getConnection
 from mappers.productMapper import mapRowToProduct
 from models.product import Product
+import logging
 
+logger = logging.getLogger(__name__)
 
 class ProductDao:
 

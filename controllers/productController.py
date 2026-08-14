@@ -1,3 +1,6 @@
+from venv import logger
+
+from config.logger import safeRun
 from services.productService import ProductService
 from models.product import Product
 
@@ -17,6 +20,7 @@ class ProductController:
         print(f"Stock: {product.stock}")
         print(f"isActive: {product.isActive}")
 
+    @safeRun
     def createProduct(self):
         print("---------Create Product --------")
 
@@ -46,14 +50,20 @@ class ProductController:
 
             product = self.productService.createProduct(product)
             self.printProduct(product)
+            logger.info("Product created: id={product.id}, name={product.name}")
             return product
 
         except ValueError as err:
             print("Could not create product: ", err)
+            logger.exception(f"Could Not  create product: {product.name} because of: {err}")
+        except Exception as e:
+            print("Unexcpecte error: ", e)
+            logger.exception(f"Failed to create product: {product.name} because of: {err}")
+
 
         return None
 
-
+    @safeRun
     def getProductById(self):
         productId = input("Enter product Id: ")
 
@@ -63,14 +73,19 @@ class ProductController:
 
             print("-------Product--------")
             self.printProduct(product)
+            logger.info("Get Product By Id: id={product.id}, name={product.name}")
+
+
 
             return product
         except ValueError as err:
             print("Failed to get Product: ", err)
+            logger.exception(f"Failed to get product: {product.id} because of: {err}")
+
 
         return None
 
-
+    @safeRun
     def getAllProducts(self):
 
         try:
@@ -85,15 +100,21 @@ class ProductController:
                 self.printProduct(p)
                 print("-------------------------------")
 
+            logger.info("Get All Products")
+
+
             return products
 
         except ValueError as err:
             print("Failed to get products: ", err)
+            logger.exception(f"Failed to getall  product because of: {err}")
+
 
 
 
         return []
 
+    
     def getAllActiveProducts(self):
         page = 1
         pageSize = 5
@@ -140,12 +161,15 @@ class ProductController:
                         page -= 1
 
                 elif choice == "b":
+                    logger.info("Get All Active Products")
                     return
                 else:
                     print("Invalid Choice")
 
             except ValueError as err:
                 print("Failed to get products", err)
+                logger.exception(f"Failed to get all  ACTIVE product because of: {err}")
+
                 break
             
 
@@ -157,7 +181,7 @@ class ProductController:
 
     
     
-
+    @safeRun
     def updateProduct(self):
         print("----------Update Product------------")
         productId  = input("Product Id: ")
@@ -201,6 +225,8 @@ class ProductController:
 
         return False
 
+
+    @safeRun
     def getProductByCategory(self):
 
         categoryId = input("Enter ccategory Id: ")
@@ -225,6 +251,8 @@ class ProductController:
 
         return []
 
+
+    @safeRun
     def getProductBySupplier(self):
     
         supplierId = input("Enter supplier Id: ")
@@ -250,10 +278,12 @@ class ProductController:
         return []
     
 
-
+    @safeRun
     def deleteProduct(self):
         pass
 
+
+    @safeRun
     def deactivateProduct(self):
         print("--------Deactivate Product --------")
         productId = input("Product Id: ")
@@ -282,6 +312,7 @@ class ProductController:
         return False
 
 
+    @safeRun
     def activateProduct(self):
         print("--------Activate Product --------")
         productId = input("Product Id: ")

@@ -1,5 +1,6 @@
 from config.connection import getConnection
 
+from config.logger import setupLogging
 from controllers import supplierController
 from controllers.categoryController import CategoryController
 from controllers.productController import ProductController
@@ -87,7 +88,7 @@ orderController.getUserOrders(user2) """
 
 
 
-
+setupLogging()
 
 
 while True:
@@ -118,7 +119,7 @@ while True:
 
         admin = userController.login(loginAsAdmin = True)
         if admin:
-            adminMenu  = AdminMenu(user)
+            adminMenu  = AdminMenu(admin)
             adminMenu.show()
 
     elif choice == "4":
