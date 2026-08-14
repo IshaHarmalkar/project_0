@@ -1,5 +1,6 @@
 from dao.userDao import UserDao
 from models.user import User
+import bcrypt
 
 
 class UserService:
@@ -24,11 +25,14 @@ class UserService:
 
         if existingUser:
             raise ValueError("Email already registered")
+        password = user.password.strip()
+
+        hashedPassword = bcrypt.hashpw(user.password.encode("utf-8"), bcrypt.gensalt())
 
         newUser = User(
             name=user.name.strip(),
             email=user.email.strip(),
-            password=user.password.strip()
+            password=hashedPassword.decode("utf-8")
         )
         return self.userDao.createuser(newUser)
 
@@ -40,10 +44,11 @@ class UserService:
         if user is None:
             raise ValueError("Invalid email or password") #user doe snot exist for this email, msg capped to not reveal
 
-        print("Inside login, printing fetched password: ", user.password)
-        print("Inside login, printing password: ", password)
+        #print("Inside login, printing fetched password: ", user.password)
+        #print("Inside login, printing password: ", password)
 
-        validPassword = user.password == password
+        #validPassword = user.password == password
+        validPassword = bcrypt.checkpw(password.encode("utf-8"), user.password.encode("utf-8"))
         if not validPassword:
             raise ValueError("Invalid email or password")
 

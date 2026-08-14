@@ -1,65 +1,61 @@
-2026-08-14 21:26:33 | INFO     | mysql.connector | plugin_name: caching_sha2_password
-2026-08-14 21:26:33 | INFO     | mysql.connector | AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
-2026-08-14 21:26:33 | DEBUG    | mysql.connector | Exchanging further packets
-2026-08-14 21:26:33 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | Building SSL context
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | Switching to SSL
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | SSL has been enabled
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | Starting authorization phase
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | Exchanging further packets
-2026-08-14 21:26:38 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
-2026-08-14 21:26:38 | INFO     | venv | Get All Products
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | Building SSL context
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | Switching to SSL
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | SSL has been enabled
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | Starting authorization phase
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | Exchanging further packets
-2026-08-14 21:26:42 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
-2026-08-14 21:26:42 | INFO     | venv | Get Product By Id: id={product.id}, name={product.name}
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | Building SSL context
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | Switching to SSL
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | SSL has been enabled
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | Starting authorization phase
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | Exchanging further packets
-2026-08-14 21:26:47 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
-2026-08-14 21:26:47 | INFO     | venv | Get Product By Id: id={product.id}, name={product.name}
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | Building SSL context
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | Switching to SSL
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | SSL has been enabled
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | Starting authorization phase
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | Exchanging further packets
-2026-08-14 21:26:52 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
-2026-08-14 21:26:52 | ERROR    | config.logger | Unhandled error in getProductById
-Traceback (most recent call last):
-  File "E:\projects\LearningThings\psl_python\project0\p0_1\controllers\productController.py", line 72, in getProductById
-    product = self.productService.getProduct(productId)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "E:\projects\LearningThings\psl_python\project0\p0_1\services\productService.py", line 45, in getProduct
-    raise ValueError("Product not found")
-ValueError: Product not found
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "E:\projects\LearningThings\psl_python\project0\p0_1\config\logger.py", line 17, in wrapper
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "E:\projects\LearningThings\psl_python\project0\p0_1\controllers\productController.py", line 83, in getProductById
-    logger.exception(f"Failed to get product: {product.id} because of: {err}")
-                                               ^^^^^^^
-UnboundLocalError: cannot access local variable 'product' where it is not associated with a value
-2026-08-14 21:30:02 | DEBUG    | mysql.connector | Building SSL context
-2026-08-14 21:30:03 | DEBUG    | mysql.connector | Switching to SSL
-2026-08-14 21:30:03 | DEBUG    | mysql.connector | SSL has been enabled
-2026-08-14 21:30:03 | DEBUG    | mysql.connector | Starting authorization phase
-2026-08-14 21:30:03 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
-2026-08-14 21:30:03 | INFO     | mysql.connector | package: mysql.connector.plugins
-2026-08-14 21:30:03 | INFO     | mysql.connector | plugin_name: caching_sha2_password
-2026-08-14 21:30:03 | INFO     | mysql.connector | AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
-2026-08-14 21:30:03 | DEBUG    | mysql.connector | Exchanging further packets
-2026-08-14 21:30:03 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
-2026-08-14 21:30:06 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 21:30:06 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 21:30:06 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 21:30:06 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 21:30:06 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 21:30:06 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 21:30:06 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 21:30:06 | INFO     | venv | Get All Products
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 21:30:08 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 21:30:08 | INFO     | venv | Get Product By Id: id={product.id}, name={product.name}
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 21:37:14 | INFO     | mysql.connector | package: mysql.connector.plugins
+2026-08-14 21:37:14 | INFO     | mysql.connector | plugin_name: caching_sha2_password
+2026-08-14 21:37:14 | INFO     | mysql.connector | AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 21:37:14 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 21:40:25 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 23:44:51 | INFO     | mysql.connector | package: mysql.connector.plugins
+2026-08-14 23:44:51 | INFO     | mysql.connector | plugin_name: caching_sha2_password
+2026-08-14 23:44:51 | INFO     | mysql.connector | AUTHENTICATION_PLUGIN_CLASS: MySQLCachingSHA2PasswordAuthPlugin
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 23:44:51 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | Exchanging further packets
+2026-08-14 23:44:52 | DEBUG    | mysql.connector | caching_sha2_password completed succesfully
+2026-08-14 23:45:06 | DEBUG    | mysql.connector | Building SSL context
+2026-08-14 23:45:06 | DEBUG    | mysql.connector | Switching to SSL
+2026-08-14 23:45:06 | DEBUG    | mysql.connector | SSL has been enabled
+2026-08-14 23:45:06 | DEBUG    | mysql.connector | Starting authorization phase
+2026-08-14 23:45:06 | DEBUG    | mysql.connector | The provided initial strategy is caching_sha2_password
