@@ -113,6 +113,8 @@ class CategoryController():
 
         except ValueError as err:
             print("Could not delete category as: ", err)
+        except Exception as e:
+            print("Cannot delete category as: ", e)
 
         return False
 
