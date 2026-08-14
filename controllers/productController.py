@@ -95,27 +95,67 @@ class ProductController:
         return []
 
     def getAllActiveProducts(self):
+        page = 1
+        pageSize = 5
+
+        while True:
     
-        try:
-            products = self.productService.getAllActiveProducts()
+            try:
+                products = self.productService.getAllActiveProducts(page, pageSize)
 
-            if not products:
-                print("No products found")
-                return []
+                if not products:
+                    if page == 1:
+                        print("No products found")
+                        return []
+                    print("You are on the last page.")
+                    page -= 1
+                    input("Press enter to conitnue")
+                    continue
+                    
 
-            print("-------Products------------")
-            for p in products:
-                self.printProduct(p)
+                print()
+
+                print(f"-----------------PRODUCTS - PAGE {page}-------------")
                 print("-------------------------------")
 
-            return products
+                for p in products:
+                    self.printProduct(p)
+                    print("-------------------------------")
 
-        except ValueError as err:
-            print("Failed to get products: ", err)
+                print("N - Next Page")
+                print("P - Prev Page")
+                print("B - Back")
+
+                choice  = input("Enter Choice: ").strip().lower()
+
+                if choice == "n":
+                    page += 1
+                    #nextProducts = self.productService.getAllActiveProducts(page + 1, pageSize)
+
+                    
+                elif choice == "p":
+                    if page == 1:
+                        print("Already on the first page.")
+                    else:
+                        page -= 1
+
+                elif choice == "b":
+                    return
+                else:
+                    print("Invalid Choice")
+
+            except ValueError as err:
+                print("Failed to get products", err)
+                break
+            
+
+
+                
+
 
             
 
-        return []
+    
     
 
     def updateProduct(self):

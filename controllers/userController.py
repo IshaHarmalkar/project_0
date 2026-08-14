@@ -34,14 +34,14 @@ class UserController:
         #return None
 
 
-    def login(self):
+    def login(self, loginAsAdmin = False):
         print("----------Login---------")
 
         email = input("Email: ")
         password = input("Password: ")
 
         try:
-            user = self.userService.login(email,password)
+            user = self.userService.login(email,password, loginAsAdmin)
             print("You have logged in as ", user.name)
             return user
 

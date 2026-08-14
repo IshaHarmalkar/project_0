@@ -50,8 +50,13 @@ class ProductService:
     def getAllProducts(self):
         return self.productDao.getAllProducts()
 
-    def getAllActiveProducts(self):
-        return self.productDao.getAllActiveProducts()
+    def getAllActiveProducts(self, page=1, pageSize=5):
+        if page < 1:
+            raise ValueError("Page must be greater than zero")
+
+        if pageSize <= 0:
+            raise ValueError("Page size must be greater than zero.")
+        return self.productDao.getAllActiveProducts(page, pageSize)
 
 
     def getProductsByCategory(self, categoryId):

@@ -32,7 +32,7 @@ class UserService:
         )
         return self.userDao.createuser(newUser)
 
-    def login(self, email, password):
+    def login(self, email, password, loginAsAdmin=False):
         user = self.userDao.getUserByEmail(email)
 
         if user is None:
@@ -41,6 +41,9 @@ class UserService:
         validPassword = user.password == password
         if not validPassword:
             raise ValueError("Invalid email or password")
+
+        if loginAsAdmin and not user.isAdmin:
+            raise ValueError("You do not have admin access")
 
         return user
 

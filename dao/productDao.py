@@ -76,11 +76,12 @@ class ProductDao:
                 for row in rows
                 ]
 
-    def getAllActiveProducts(self):
-            query  = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products WHERE is_active = True ORDER BY id"
+    def getAllActiveProducts(self, page=1, pageSize=5):
+            offset = (page - 1) * pageSize
+            query  = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products WHERE is_active = True ORDER BY id LIMIT %s OFFSET %s"
             conn  = getConnection()
             cursor = conn.cursor(dictionary=True)
-            cursor.execute(query)
+            cursor.execute(query, (pageSize, offset,))
             rows = cursor.fetchall()
             cursor.close()
             conn.close()
