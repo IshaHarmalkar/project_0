@@ -44,7 +44,10 @@ class OrderController:
 
     def getUserOrders(self, userId):
 
+        #userId = input("Enter user id: ")    
+
         try:
+            #userId = int(userId)
             orders = self.orderService.getUserOrders(userId)
 
             if not orders:
@@ -59,6 +62,8 @@ class OrderController:
                 total = data["total"]
 
                 self.printOrder(order, details, total, showUser=False)
+        except ValueError as verr:
+            print("Invalid user Id: ", verr)
 
         except Exception as err:
             print("Error Fetching orders: ", err)

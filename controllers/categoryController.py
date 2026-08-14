@@ -69,6 +69,8 @@ class CategoryController():
         name  = input("New Name: ")
         try:
             categoryId = int(categoryId)
+            if not name.strip():
+                raise ValueError ("Category name cannot be empty")
             category = Category(
                 id=categoryId,name=name
             )

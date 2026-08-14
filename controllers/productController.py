@@ -90,7 +90,33 @@ class ProductController:
         except ValueError as err:
             print("Failed to get products: ", err)
 
+
+
         return []
+
+    def getAllActiveProducts(self):
+    
+        try:
+            products = self.productService.getAllActiveProducts()
+
+            if not products:
+                print("No products found")
+                return []
+
+            print("-------Products------------")
+            for p in products:
+                self.printProduct(p)
+                print("-------------------------------")
+
+            return products
+
+        except ValueError as err:
+            print("Failed to get products: ", err)
+
+            
+
+        return []
+    
 
     def updateProduct(self):
         print("----------Update Product------------")

@@ -50,6 +50,9 @@ class ProductService:
     def getAllProducts(self):
         return self.productDao.getAllProducts()
 
+    def getAllActiveProducts(self):
+        return self.productDao.getAllActiveProducts()
+
 
     def getProductsByCategory(self, categoryId):
         category = self.categoryDao.getCategoryById(categoryId)

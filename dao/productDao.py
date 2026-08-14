@@ -76,6 +76,20 @@ class ProductDao:
                 for row in rows
                 ]
 
+    def getAllActiveProducts(self):
+            query  = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products WHERE is_active = True ORDER BY id"
+            conn  = getConnection()
+            cursor = conn.cursor(dictionary=True)
+            cursor.execute(query)
+            rows = cursor.fetchall()
+            cursor.close()
+            conn.close()
+    
+    
+            return [mapRowToProduct(row)
+                    for row in rows
+                    ]
+
     def getProductsByCategory(self, categoryId):
         query = "SELECT id, category_id, supplier_id, name, unit_price, stock, is_active FROM products WHERE category_id=%s ORDER BY name"
 
