@@ -71,8 +71,17 @@ cartController  = CartController()
 orderController  = OrderController()
 productController = ProductController()
 
-#orderController.getOrderById()
 
+user1 = 1
+user2  = 2
+
+orderController.getUserOrders(user1)
+orderController.getUserOrders(user2)
+
+
+orderController.getAllOrders()
+#orderController.getOrderById()
+""" 
 while True:
     print("----------WELCOME----------------")
     print("1. Add Product")
@@ -102,7 +111,7 @@ while True:
         break
     else:
         print("Invalid chocie")
-
+ """
 
 
 

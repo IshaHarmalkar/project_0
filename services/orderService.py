@@ -7,6 +7,8 @@ from dao.orderDetailDao import OrderDetailDao
 from dao.productDao import ProductDao
 from config.connection import getConnection
 
+from mappers.orderMapper import mapOrdersWithDetails
+
 class OrderService:
 
     def __init__(self):
@@ -73,4 +75,14 @@ class OrderService:
             conn.rollback()
             raise
         finally:
-            conn.close()   
+            conn.close() 
+
+
+    def getUserOrders(self, userId):
+        rows = self.orderDao.getUserOrdersWithDetails(userId)
+
+        return mapOrdersWithDetails(rows)
+
+    def getAllOrders(self):
+        rows = self.orderDao.getAllOrdersWithDetails()
+        return mapOrdersWithDetails(rows)
